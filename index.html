@@ -5,17 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Aether is a cinematic AI creative platform for teams building visuals, workflows, and code faster." />
     <meta name="theme-color" content="#020203" />
+    <meta name="keywords" content="AI, creative intelligence, generative AI, workflow automation, design tools, visual synthesis" />
+    <meta name="author" content="Aether Platform Inc." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <title>Aether — Next-Generation Creative Intelligence Platform</title>
+    
+    <!-- Open Graph / Social Sharing -->
     <meta property="og:title" content="Aether — Next-Generation Creative Intelligence Platform" />
     <meta property="og:description" content="Generate visuals, automate workflows, and ship creative systems with one premium platform." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aether.platform" />
+    <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aether — Creative Intelligence Engine" />
+    <meta name="twitter:description" content="Synthesize raw imaginative force into production-grade cinematic visuals, automated workspaces, and structured codebases autonomously." />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Æ</text></svg>" />
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/spacegrotesk/v22/8JqLV7f9eXvS3zJbH4N5Qw.woff2" crossorigin />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Aether",
+      "applicationCategory": "DesignApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "49.00",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1247"
+      }
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" role="application" aria-label="Aether Creative Platform"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Performance monitoring placeholder -->
+    <script>
+      // Measure Core Web Vitals
+      if ('PerformanceObserver' in window) {
+        const observer = new PerformanceObserver((list) => {
+          list.getEntries().forEach((entry) => {
+            console.log('Performance:', entry.name, entry.startTime);
+          });
+        });
+        observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input'] });
+      }
+    </script>
   </body>
 </html>
 
