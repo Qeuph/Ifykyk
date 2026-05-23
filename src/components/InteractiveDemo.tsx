@@ -159,7 +159,13 @@ export default function InteractiveDemo() {
 
               {/* Dynamic Action Selector Mode */}
               <div className="grid grid-cols-3 gap-2">
-                {(['image', 'text', 'workflow'] as const).map((m) => (
+                {(['image', 'text', 'workflow'] as const).map((m) => {
+                  const modeStyles = {
+                    image: 'bg-blue-500/10 border-blue-500/50 text-blue-400',
+                    text: 'bg-cyan-500/10 border-cyan-500/50 text-cyan-400',
+                    workflow: 'bg-violet-500/10 border-violet-500/50 text-violet-400'
+                  } as const;
+                  return (
                   <button
                     key={m}
                     onClick={() => {
@@ -171,13 +177,14 @@ export default function InteractiveDemo() {
                     }}
                     className={`border rounded-lg py-2 text-center font-mono text-[9px] uppercase tracking-widest font-bold transition-all ${
                       activeMode === m
-                        ? `bg-${m === 'image' ? 'blue-500/10 border-blue-500/50 text-blue-400' : m === 'text' ? 'cyan-500/10 border-cyan-500/50 text-cyan-400' : 'violet-500/10 border-violet-500/50 text-violet-400'}`
+                        ? modeStyles[m]
                         : 'border-white/5 text-zinc-500 hover:text-zinc-300'
                     }`}
                   >
                     {m} MODE
                   </button>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Input Area */}
