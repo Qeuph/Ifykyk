@@ -203,3 +203,20 @@
     scroll-behavior: auto !important;
   }
 }
+
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.glow-card {
+  animation: fade-up 700ms ease both;
+}
+
+@media (max-width: 640px) {
+  .glow-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}

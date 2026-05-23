@@ -22,6 +22,7 @@ import CapabilityShowcase from './components/CapabilityShowcase';
 import InteractiveDemo from './components/InteractiveDemo';
 import WorkflowNodes from './components/WorkflowNodes';
 import FaqAccordion from './components/FaqAccordion';
+import ExperienceHighlights from './components/ExperienceHighlights';
 
 import { 
   METRICS, 
@@ -191,7 +192,10 @@ export default function App() {
       {/* 6. Workflow Connections Section */}
       <WorkflowNodes />
 
-      {/* 7. Use cases Section */}
+      {/* 7. Experience Highlights */}
+      <ExperienceHighlights />
+
+      {/* 8. Use cases Section */}
       <section id="usecases" className="py-24 bg-luxury-black relative overflow-hidden">
         {/* Spot ambient */}
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full ambient-spot-cyan blur-3xl opacity-50 pointer-events-none"></div>
