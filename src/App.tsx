@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useMemo, useState, FormEvent } from 'react';
 import { 
   ArrowUpRight, 
   Sparkles, 
@@ -32,12 +32,11 @@ import {
 } from './data';
 
 export default function App() {
-  const [activePlan, setActivePlan] = useState<string>('tier-studio');
   const [newsletterEmail, setNewsletterEmail] = useState<string>('');
   const [subscribed, setSubscribed] = useState<boolean>(false);
 
-  // Custom visual nodes indicator
-  const [activeClusterNode, setActiveClusterNode] = useState<string>('US-EAST');
+
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   const handleSubscribe = (e: FormEvent) => {
     e.preventDefault();
@@ -51,11 +50,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-luxury-black text-zinc-100 flex flex-col font-sans selection:bg-white selection:text-black">
+    <div id="top" className="min-h-screen bg-luxury-black text-zinc-100 flex flex-col font-sans selection:bg-white selection:text-black">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       
       {/* 1. Global Navigation Header */}
       <Navbar />
 
+      <main id="main-content">
       {/* 2. Panoramic Cinema Hero Section */}
       <header className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden border-b border-white/5">
         
@@ -128,6 +129,7 @@ export default function App() {
             <div className="relative rounded-xl overflow-hidden aspect-[16:9] border border-white/5">
               <img
                 src="/src/assets/images/aether_core_engine_1779541743862.png"
+                loading="lazy"
                 alt="Aether Core Engine Spatial Art"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000"
@@ -421,8 +423,7 @@ export default function App() {
                   </div>
 
                   <button
-                    onClick={() => setActivePlan(plan.id)}
-                    className={`w-full py-3.5 px-4 rounded-xl font-mono text-xs font-bold uppercase tracking-widest transition-all ${
+                                        className={`w-full py-3.5 px-4 rounded-xl font-mono text-xs font-bold uppercase tracking-widest transition-all ${
                       isSelected 
                         ? 'bg-white text-luxury-black hover:bg-zinc-200' 
                         : 'border border-white/10 text-white hover:bg-white/5'
@@ -501,6 +502,8 @@ export default function App() {
         </div>
       </section>
 
+      </main>
+
       {/* 13. Minimal Luxury Footer */}
       <footer className="py-12 bg-luxury-black border-t border-white/5 font-mono text-[10px] text-zinc-500 relative z-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -510,7 +513,7 @@ export default function App() {
             <div>
               <span className="text-zinc-400 font-bold">AETHER PLATFORM INC.</span>
               <span className="mx-2">||</span>
-              <span>© {new Date().getFullYear()} All rights reserved.</span>
+              <span>© {currentYear} All rights reserved.</span>
             </div>
             
             <div className="flex gap-4 text-[9px] text-zinc-600">
