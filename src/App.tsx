@@ -1,4 +1,4 @@
-import { useMemo, useState, FormEvent } from 'react';
+import { useMemo, useState, FormEvent, useEffect, Suspense } from 'react';
 import { 
   ArrowUpRight, 
   Sparkles, 
@@ -14,8 +14,12 @@ import {
   HelpCircle,
   MessageSquare,
   Globe,
-  Share2
+  Share2,
+  Moon,
+  Sun,
+  Loader2
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import Navbar from './components/Navbar';
 import CapabilityShowcase from './components/CapabilityShowcase';
@@ -23,6 +27,8 @@ import InteractiveDemo from './components/InteractiveDemo';
 import WorkflowNodes from './components/WorkflowNodes';
 import FaqAccordion from './components/FaqAccordion';
 import ExperienceHighlights from './components/ExperienceHighlights';
+import ContactModal from './components/ContactModal';
+import ErrorBoundary from './components/ErrorBoundary';
 
 import { 
   METRICS, 
@@ -35,7 +41,21 @@ import {
 export default function App() {
   const [newsletterEmail, setNewsletterEmail] = useState<string>('');
   const [subscribed, setSubscribed] = useState<boolean>(false);
+  const [contactModalOpen, setContactModalOpen] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(true);
 
+  useEffect(() => {
+    // Scroll to hash on mount if present
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
@@ -51,7 +71,8 @@ export default function App() {
   };
 
   return (
-    <div id="top" className="min-h-screen bg-luxury-black text-zinc-100 flex flex-col font-sans selection:bg-white selection:text-black">
+    <ErrorBoundary>
+    <div id="top" className={`min-h-screen ${darkMode ? 'bg-luxury-black text-zinc-100' : 'bg-zinc-50 text-zinc-900'} flex flex-col font-sans selection:bg-white selection:text-black`}>
       <a href="#main-content" className="skip-link">Skip to main content</a>
       
       {/* 1. Global Navigation Header */}
@@ -540,6 +561,10 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Contact Modal */}
+      <ContactModal isOpen={contactModalOpen} onClose={() => setContactModalOpen(false)} />
+
     </div>
+    </ErrorBoundary>
   );
 }
