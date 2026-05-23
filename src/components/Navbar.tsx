@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Shield, Hammer, Activity, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,11 +26,11 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-luxury-black/90 border-b border-white/5 backdrop-blur-xl' : 'py-6 bg-transparent'}`}>
+    <nav aria-label="Primary" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-luxury-black/90 border-b border-white/5 backdrop-blur-xl' : 'py-6 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a href="#top" className="flex items-center gap-3 group" aria-label="Aether home">
           <div className="relative w-8 h-8 rounded-lg bg-gradient-to-tr from-luxury-neon-blue to-luxury-neon-purple p-[1px] flex items-center justify-center transition-transform duration-500 group-hover:rotate-12">
             <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-luxury-neon-blue to-luxury-neon-purple blur-md opacity-40 group-hover:opacity-80 transition-opacity"></div>
             <div className="w-full h-full bg-luxury-black rounded-[7px] flex items-center justify-center relative z-10">
