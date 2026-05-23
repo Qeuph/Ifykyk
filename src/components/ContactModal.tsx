@@ -66,6 +66,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </h3>
                 <button
                   onClick={onClose}
+                  aria-label="Close modal"
                   className="p-2 hover:bg-white/5 rounded-lg transition-colors text-zinc-400 hover:text-white"
                 >
                   <X className="w-5 h-5" />
@@ -89,10 +90,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-mono text-zinc-400 uppercase mb-2">
+                        <label htmlFor="contact-name" className="block text-xs font-mono text-zinc-400 uppercase mb-2">
                           Name *
                         </label>
                         <input
+                          id="contact-name"
                           type="text"
                           name="name"
                           required
@@ -103,10 +105,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-mono text-zinc-400 uppercase mb-2">
+                        <label htmlFor="contact-company" className="block text-xs font-mono text-zinc-400 uppercase mb-2">
                           Company
                         </label>
                         <input
+                          id="contact-company"
                           type="text"
                           name="company"
                           value={formData.company}
@@ -118,10 +121,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-zinc-400 uppercase mb-2">
+                      <label htmlFor="contact-email" className="block text-xs font-mono text-zinc-400 uppercase mb-2">
                         Email *
                       </label>
                       <input
+                        id="contact-email"
                         type="email"
                         name="email"
                         required
@@ -133,10 +137,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-zinc-400 uppercase mb-2">
+                      <label htmlFor="contact-message" className="block text-xs font-mono text-zinc-400 uppercase mb-2">
                         Message *
                       </label>
                       <textarea
+                        id="contact-message"
                         name="message"
                         required
                         value={formData.message}
