@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-luxury-black: #020203;
+  --color-luxury-dark: #07070a;
+  --color-luxury-card: rgba(10, 10, 12, 0.75);
+  --color-luxury-border: rgba(255, 255, 255, 0.07);
+  --color-luxury-neon-blue: #6366f1;
+  --color-luxury-neon-purple: #a855f7;
+  --color-luxury-neon-cyan: #14b8a6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-luxury-black);
+    color: #f3f4f6;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar matching premium dark design */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 3px;
+    transition: background 0.3s;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444;
+  }
+}
+
+/* Custom elite gradients and luxury graphics */
+.glow-card {
+  position: relative;
+  background: rgba(13, 13, 13, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.glow-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.8),
+              0 0 30px -15px rgba(99, 102, 241, 0.18);
+}
+
+.glow-card:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.3) 0%,
+    rgba(168, 85, 247, 0.25) 50%,
+    rgba(20, 184, 166, 0) 100%
+  );
+}
+
+/* Accent glowing ambient radial spots */
+.ambient-spot-blue {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.09) 0%, rgba(0,0,0,0) 70%);
+}
+
+.ambient-spot-purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(0,0,0,0) 70%);
+}
+
+.ambient-spot-cyan {
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.07) 0%, rgba(0,0,0,0) 70%);
+}
+
+/* Subtle moving scanner line to trigger "thinking" in our product demo */
+@keyframes tech-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scan-line {
+  animation: tech-scan 3s linear infinite;
+}
+
+/* Animated structural grid lines background */
+.grid-bg-overlay {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+}
+
+/* Horizontal flowing dot stream background */
+@keyframes dotted-flow {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 0px;
+  }
+}
+
+.horizontal-flow-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Cinematic mask for grids */
+.grid-mask {
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
+/* Gradient text shorthand */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+}
+
+.text-gradient-creative {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #ffffff 0%, #818cf8 40%, #c084fc 100%);
+}
+
+/* Interactive custom switch buttons styling */
+.glass-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 15px -5px rgba(59, 130, 246, 0.3);
+  outline: none;
+}
+

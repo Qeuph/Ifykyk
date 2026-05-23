@@ -1,0 +1,6 @@
+{
+  "name": "Aether Creative Intelligence",
+  "description": "An elite, studio-grade showcase and interactive creative engine for a next-generation multi-modal AI platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
